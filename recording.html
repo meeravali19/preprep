@@ -1,97 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Recording Page</title>
-<style>
-    /* Add any necessary styles */
-    body, html {
-        height: 100%;
-        margin: 0;
-        overflow: hidden; /* Prevent scrolling */
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speech to Text with Video Streaming</title>
+  <style>
     .container {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
     }
-    .video-container {
-        position: relative;
-        flex: 1;
+   
+    .container1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10vh;
     }
-    .video-element {
-        width: 100%;
-        height: 100%;
+
+
+    .left-container, .right-container {
+      flex: 1;
     }
-    .stop-button {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        padding: 10px 20px;
-        background-color: #f00; /* Adjust as needed */
-        color: #fff; /* Adjust as needed */
-        cursor: pointer;
-        border: none;
-        outline: none;
+
+    .left-container {
+      margin-right: 10px; /* Add some space between the video and text */
     }
-</style>
+
+    #final-text {
+      background-color: #f44336;
+      padding: 10px;
+      color: white;
+      width: 95%; /* Make the textarea fill the available width */
+      height: 100%; /* Make the textarea fill the available height */
+      border: none; /* Remove default textarea border */
+    }
+
+    .start-button {
+      background-color: #f44336; /* Red */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    /* Button hover effect */
+    .start-button:hover {
+      background-color: #d32f2f; /* Darker red */
+    }
+
+    /* Button click effect */
+    .start-button:active {
+      background-color: #b71c1c; /* Darkest red */
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="video-container">
-        <video id="video" class="video-element" playsinline></video>
+  <div class="left-container">
+    <div id="video-container">
+      <center><video id="video" autoplay playsinline></video></center>
     </div>
-    <button id="stopButton" class="stop-button">Stop</button>
+  </div>
+  <div class="right-container">
+    <textarea id="final-text" rows="29" cols="40"></textarea>
+  </div>
+</div>
+
+<div class="container1">
+  <center><button class="start-button">Start preparation</button></center>
 </div>
 
 <script>
-    const video = document.getElementById('video');
-    const stopButton = document.getElementById('stopButton');
+  const finalText = document.getElementById('final-text');
+  const startButton = document.querySelector('.start-button'); // Changed to querySelector to select by class
+  let finalSpeech = '';
+  let mediaStream;
+  
+  let permissionRequested = false;
 
-    // Get user media
-    function startCamera() {
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
-                .then(function(stream) {
-                    video.srcObject = stream;
-                    video.play(); // Autoplay won't work on iOS without this
-                })
-                .catch(function(error) {
-                    console.error('getUserMedia error:', error);
-                });
-        } else if (navigator.getUserMedia) { // handle older browsers that use getUserMedia
-            navigator.getUserMedia({ video: true, audio: true }, function(stream) {
-                video.srcObject = stream;
-                video.play(); // Autoplay won't work on iOS without this
-            }, function(error) {
-                console.error('getUserMedia error:', error);
-            });
-        } else {
-            console.error('getUserMedia is not supported in this browser.');
+  // Video streaming
+  const video = document.getElementById('video');
+
+  // Request permission for camera and microphone
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true})
+      .then(function(stream) {
+        mediaStream = stream;
+        video.srcObject = stream;
+        if (!permissionRequested) {
+          startRecording();
+          permissionRequested = true;
         }
+      })
+      .catch(function(error) {
+        console.error('Error accessing webcam:', error);
+      });
+  } else {
+    console.error('getUserMedia is not supported for video');
+  }
+
+  // Speech recognition initialization
+  let recognition;
+  if ('webkitSpeechRecognition' in window) {
+    recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.lang = 'en-US';
+  } else {
+    console.error('Speech recognition not supported in this browser');
+  }
+
+  let isListening = false;
+
+  startButton.addEventListener('click', function() {
+    if (!isListening) {
+      startRecognition();
+    } else {
+      stopRecognition();
     }
+  });
 
-    // Add click event listener to stop button
-    stopButton.addEventListener('click', function() {
-    if (video.srcObject) {
-        let tracks = video.srcObject.getTracks();
-        tracks.forEach(function(track) {
-            track.stop();
-        });
-        video.srcObject = null;
-        
-        // Navigate to the previous page
-        window.history.back();
-    }
-});
+  function startRecognition() {
+    isListening = true;
+    recognition.start();
+    startButton.textContent = 'Stop Preparation';
+  }
 
+  function stopRecognition() {
+    isListening = false;
+    recognition.stop();
+    startButton.textContent = 'Start preparation';
+  }
 
-    // Start camera when the page loads
-    window.addEventListener('load', startCamera);
+  recognition.onresult = function(event) {
+    const transcript = event.results[event.results.length - 1][0].transcript;
+    // Here you might want to update the finalText differently, like appending to a textarea or updating in real-time
+    finalText.textContent += transcript;
+  };
+
+  recognition.onerror = function(event) {
+    console.error('Speech recognition error detected: ' + event.error);
+  };
 </script>
-
 </body>
 </html>
