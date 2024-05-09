@@ -202,7 +202,7 @@ ul li a:hover{
     cursor: pointer;
     transform: rotateY(180deg);
   }
-  .front,.front1,.front2,
+  .front,.front1,.front2,front3,
   .back {
     height: 100%;
     width: 100%;
