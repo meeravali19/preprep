@@ -233,6 +233,12 @@ ul li a:hover{
     
 
   }
+.container-wrapper .front3 {
+    background-image: url(#);
+    background-size: cover;
+    
+
+  }
 
   .back {
     background-color: #3a3a3a;
@@ -271,12 +277,31 @@ ul li a:hover{
     letter-spacing: 2px;
     text-align: center;
 }
-.container-wrapper .front {
+.container-wrapper1 .front {
     background-image: url(box21.jpg);
     background-size: cover;
     
 
   }
+.container-wrapper1 .front1 {
+    background-image: url(box22.jpg);
+    background-size: cover;
+    
+
+  }
+.container-wrapper1 .front2 {
+    background-image: url(BOX23.jpg);
+    background-size: cover;
+    
+
+  }
+.container-wrapper1 .front3 {
+    background-image: url(box24.jpg);
+    background-size: cover;
+    
+
+  }
+
 <!-----faq---->
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
