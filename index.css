@@ -271,8 +271,11 @@ ul li a:hover{
     letter-spacing: 2px;
     text-align: center;
 }
-.container-wrapper1 .front {
-    background-image: url(https://source.unsplash.com/random/350x500);
+.container-wrapper .front {
+    background-image: url(box21.jpg);
+    background-size: cover;
+    
+
   }
 <!-----faq---->
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
