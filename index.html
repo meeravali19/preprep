@@ -1,332 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>preprep</title>
-
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrePrep - Prepare & Crack Goals</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('back2.png');
+            background-size: cover;
+            background-position: center;
+        }
 
-    <link rel="icon" href="title logo.png" type="image/x-icon">
+        .service-card:hover {
+            transform: translateY(-4px);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item-header {
+            cursor: pointer;
+        }
+
+        .faq-item-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item-content.active {
+            max-height: 200px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
 </head>
-<body>
 
-    <div class="main">
-        <div class="navbar">
-            <div class="icon">
-                <h2 class="logo">PrePrep<span>.</span></h2>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-black-100 bg-opacity-90 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <h2 class="text-4xl font-bold text-red-500">
+                    PrePrep<span class="text-red-700">.</span>
+                </h2>
+
+                <div class="desktop-menu  md:flex space-x-8 text-m">
+                    <a href="#home" class="text-red-500 hover:text-blue-700 transition-colors">HOME</a>
+                    <a href="#service" class="text-red-500 hover:text-blue-700 transition-colors">SERVICE</a>
+                    <a href="#about" class="text-red-500 hover:text-blue-700 transition-colors">ABOUT</a>
+                    <a href="#contact" class="text-red-500 hover:text-blue-700 transition-colors">CONTACT</a>
+                </div>
+
+                <button class="menu-toggle md:hidden">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
 
-            <div class="menu">
-                <ul>
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#service">SERVICE</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                    
-                </ul>
-                
+            <!-- Mobile menu -->
+            <div class="mobile-menu py-4">
+                <a href="#home" class="block py-2 text-white hover:text-orange-500">HOME</a>
+                <a href="#service" class="block py-2 text-white hover:text-orange-500">SERVICE</a>
+                <a href="#about" class="block py-2 text-white hover:text-orange-500">ABOUT</a>
+                <a href="#contact" class="block py-2 text-white hover:text-orange-500">CONTACT</a>
             </div>
+        </div>
+    </nav>
 
-            
-         <!--------------main body-->
-        </div id="home"> 
-        <div class="content">
-            <h1>PrePare & <br><span>Crack Goals</span> <br>Get favourate position</h1>
-            <p class="par">Don't leave your career aspirations to chance. With our platform, you have the tools, 
-                  <br> guidance, and support you need to prepare, crack, and land your favorite position.
-                <br>Start your journey today and take the first step towards a fulfilling and successful career.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 py-20 bg-cover bg-center">
+            <div class="text-white max-w-2xl">
+                <h1 class="text-5xl font-bold mb-6 text-blue-700
+                  shadow-lg">
+                    PrePare & <br>
+                    <span class="text-red-700">Crack Goals</span> <br>
+                    Get favorite position
+                </h1>
+                <p class="text-lg font-awesome mb-8 text-white-700">
+                    Don't leave your career aspirations to chance. With our platform,
+                    you have the tools, guidance, and support you need to prepare,
+                    crack, and land your favorite position.
+                </p>
+                <div class="mt-8">
+                    <button
+                        style="background-color: orange; color: white; padding: 8px 16px; border-radius: 8px; cursor: pointer;"
+                        onclick="window.open('recording.html', 'self');">
+                        Start Prep
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <button id="cn1" class="cn"><a>Start Prep</a></button>
-                
+    <!-- Services Section -->
+    <section id="service" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-200">
+                        <img src="2.png" alt="Interview Prep" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Interview Prep</h3>
+                        <p class="text-gray-600">Prepare for job interviews with confidence</p>
                     </div>
                 </div>
-        </div>
-    </div>
-   <!-------service-->
-   <div id="service">
-   <div class="head">
-    <h1>Service Of  PrePrep</h1>
 
-  </div>
-  
-
-
-    <!-----boxes-->
-    <div class="container-wrapper" >
-        <div class="container">
-          <div class="card">
-            <div class="front"></div>
-            <div class="back">
-              <h1>Back of Card</h1>
-              <p>Additional info on the back of the card</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="container">
-            <div class="card">
-              <div class="front1"></div>
-              <div class="back">
-                <h1>Back of Card</h1>
-                <p>Additional info on the back of the card</p>
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="card">
-              <div class="front2"></div>
-              <div class="back">
-                <h1>Back of Card</h1>
-                <p>Additional info on the back of the card</p>
-              </div>
-            </div>
-          </div>
-          
-        <!-- Repeat this container three more times -->
-        <div class="container">
-          <div class="card">
-            <div class="front3"></div>
-            <div class="back">
-              <h1>Back of Card</h1>
-              <p>Additional info on the back of the card</p>
-            </div>
-          </div>
-        </div>
-        <!-- Repeat this container three more times -->
-      </div>
-    </div>
-      <!-------advantage heading-->
-      <div class="head1">
-        <h1>Advantages Of Self Prep</h1>
-
-      </div>
-      
-      <!-------boxes2-->
-     
-      <div class="container-wrapper1" >
-        
-        <div class="container">
-          <div class="card">
-            <div class="front"></div>
-            <div class="back">
-              <h1>Mirror preparation</h1>
-              <p>offers immediate feedback, helping you adjust your body language, tone, and expressions effectively.Allows individuals to tailor their practice to their specific needs and schedule</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="container">
-            <div class="card">
-              <div class="front1"></div>
-              <div class="back">
-                <h1>Confidence Building</h1>
-                <p> Practicing alone in a mirror can significantly boost confidence. It offers a safe space to rehearse without judgment, allowing you to refine your delivery and overcome nervousness.</p>
-              </div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="card">
-              <div class="front2"></div>
-              <div class="back">
-                <h1>Customization</h1>
-                <p>When preparing alone, you have full control over the content and focus of your practice. You can tailor the material to address your specific weaknesses or areas of improvement. This personalized approach can lead to more effective learning and skill development.</p>
-              </div>
-            </div>
-          </div>
-          
-        <!-- Repeat this container three more times -->
-        <div class="container">
-          <div class="card">
-            <div class="front3"></div>
-            <div class="back">
-              <h1>Cost-Effectiveness and Accessibility</h1>
-              <p>Self preparation is cost-effective and accessible. You don't need additional resources or a trainer to practice effectively. A mirror or video recording device is usually sufficient for self assessment.</p>
-            </div>
-          </div>
-        </div>
-        <!-- Repeat this container three more times -->
-      </div>
-
-
-
-
-      <!-------faq-->
-      
-     
-
-      <div class="accordion">
-        <center><h1>FAQ</h1></center>
-        <div class="accordion-item">
-          <div class="accordion-item-header">
-            How do I start a preparation session?
-          </div>
-          <div class="accordion-item-body">
-            <div class="accordion-item-body-content">
-              To start, click on the "Start Prep" button on the homepage. This will take you to a new page where you can see yourself through the camera and begin preparing.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-item-header">
-            What can I do during the preparation session?
-          </div>
-          <div class="accordion-item-body">
-            <div class="accordion-item-body-content">
-              During the session, you can practice speaking, presentations, or other activities while the camera and microphone reflect your performance.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-item-header">
-            How long can I prepare during each session?
-          </div>
-          <div class="accordion-item-body">
-            <div class="accordion-item-body-content">
-              You can prepare for as long as you need. When you're ready to finish, click the "Stop" button to end the session.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-item-header">
-            What happens after I click the "Stop" button?
-          </div>
-          <div class="accordion-item-body">
-            <div class="accordion-item-body-content">
-              After stopping the session, the website will convert your spoken content into text format, which will then be displayed to you.
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <div class="accordion-item-header">
-            How can I improve my preparation using this website?
-          </div>
-          <div class="accordion-item-body">
-            <div class="accordion-item-body-content">
-              This website can help you practice and refine your speaking skills through self-assessment and feedback from your recorded sessions.
-            </div>
-          </div>
-        </div>
-      </div>
-    
-
-
-
-
-
-      <!-------about me-->
-      <div calss="section">
-        <div class="container2">
-            <div class="content-section">
-                <div class="title">
-                    <h1>About Us</h1>
-                </div>
-                <div class="content2">
-                  <h3>Welcome to my corner of the internet! I'm Dudekula Meeravali, and I am passionate about self-preparation and empowering individuals to excel through effective preparation strategies.
-                     As the founder of PrePrep(Pre-preparation), I am dedicated to providing valuable resources and tools to help you succeed in various aspects of life.</h3>
-
-                      <br> <br>
-
-                      <h3>At PrePrep, I offer a range of resources tailored to enhance your self-preparation journey. Whether you're gearing up for an important presentation,
-                       interview, exam, or any significant event, my goal is to equip you with the tools and insights needed to perform at your best.</h3>
-                    </p>
-                    <div class="button">
-                    <a href="">Read More</a>
+                <!-- Service Card 2 -->
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-200">
+                        <img src="2.png" alt="Presentation Skills" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Presentation Skills</h3>
+                        <p class="text-gray-600">Master the art of public speaking</p>
                     </div>
                 </div>
-            
-            <div class="social">
-            <a href=""><i class="fab fa-facebook-f"></i></a>
-            <a href=""><i class="fab fa-twitter"></i></a>
-            <a href=""><i class="fab fa-instagram"></i></a>
+
+                <!-- Service Card 3 -->
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-200">
+                        <img src="3.png" alt="Mock Tests" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Mock Tests</h3>
+                        <p class="text-gray-600">Practice with realistic test scenarios</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-48 bg-gray-200">
+                        <img src="4.png" alt="Personal Coaching" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Personal Coaching</h3>
+                        <p class="text-gray-600">Get personalized guidance</p>
+                    </div>
+                </div>
             </div>
         </div>
-            <div class="image-section">
-                <img src="self3.jpg">
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Advantages of Self Prep</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Advantage 1 -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-md overflow-auto">
+                    <div class="image-container">
+                        <img src="box21.jpg" alt="Mirror Preparation" class="w-full h-48 object-fit">
+                    </div>
+                    <div class="content-container">
+                        <h3 class="text-xl font-semibold mb-4">Mirror Preparation</h3>
+                        <p class="text-gray-600">Immediate feedback to adjust your body language and tone effectively
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-md overflow-auto">
+                    <div class="image-container">
+                        <img src="box22.jpg" alt="Confidence Building" class="w-full h-48 object-fit">
+                    </div>
+                    <div class="content-container">
+                        <h3 class="text-xl font-semibold mb-4">Confidence Building</h3>
+                        <p class="text-gray-600">Practice in a safe space to overcome nervousness</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-md overflow-auto">
+                    <div class="image-container">
+                        <img src="box23.jpg" alt="Customization" class="w-full h-48 object-fit">
+                    </div>
+                    <div class="content-container">
+                        <h3 class="text-xl font-semibold mb-4">Customization</h3>
+                        <p class="text-gray-600">Tailor your practice to address specific areas of improvement</p>
+                    </div>
+                </div>
+
+                <!-- Advantage 4 -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-md overflow-auto">
+                    <div class="image-container">
+                        <img src="box24.jpg" alt="Cost-Effective" class="w-full h-48 object-fit">
+                    </div>
+                    <div class="content-container">
+                        <h3 class="text-xl font-semibold mb-4">Cost-Effective</h3>
+                        <p class="text-gray-600">Accessible preparation without additional resources</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="faq-item-header px-6 py-4 flex justify-between items-center">
+                        <span class="font-semibold">How do I start a preparation session?</span>
+                        <i class="fas fa-chevron-down transform transition-transform"></i>
+                    </div>
+                    <div class="faq-item-content px-6 py-4 bg-gray-50 hidden">
+                        <p class="text-gray-600">Click the 'Start Prep' button on the homepage to begin your preparation
+                            session.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="faq-item-header px-6 py-4 flex justify-between items-center">
+                        <span class="font-semibold">What can I do during the preparation session?</span>
+                        <i class="fas fa-chevron-down transform transition-transform"></i>
+                    </div>
+                    <div class="faq-item-content px-6 py-4 bg-gray-50 hidden">
+                        <p class="text-gray-600">Practice speaking, presentations, or other activities while using the
+                            camera and microphone.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="faq-item-header px-6 py-4 flex justify-between items-center">
+                        <span class="font-semibold">How long can I prepare during each session?</span>
+                        <i class="fas fa-chevron-down transform transition-transform"></i>
+                    </div>
+                    <div class="faq-item-content px-6 py-4 bg-gray-50 hidden">
+                        <p class="text-gray-600">You can prepare for as long as you need. Simply click 'Stop' when
+                            finished.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="faq-item-header px-6 py-4 flex justify-between items-center">
+                        <span class="font-semibold">FAQ4</span>
+                        <i class="fas fa-chevron-down transform transition-transform"></i>
+                    </div>
+                    <div class="faq-item-content px-6 py-4 bg-gray-50 hidden">
+                        <p class="text-gray-600">Content here </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-16 bg-gradient-to-r from-gray-50 to-gray-100">
+        <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center text-gray-800 mb-8">
+                About Me
+            </h2>
+            <div class="flex flex-col-reverse md:flex-row items-center md:space-x-8 space-y-8 md:space-y-0">
+                <!-- Creator Description -->
+                <div class="w-full md:w-1/2">
+                    <div class="text-left space-y-4">
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            Welcome to my corner of the internet! I'm <span class="text-gray-800 font-semibold">Dudekula Meeravali</span>, passionate about
+                            self-preparation and empowering individuals to excel through effective preparation strategies.
+                            As the founder of <span class="text-blue-500 font-semibold">PrePrep</span>, I am dedicated to providing valuable resources and tools 
+                            to help you succeed in various aspects of life.
+                        </p>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            At <span class="text-blue-500 font-semibold">PrePrep</span>, I offer a range of resources tailored to enhance your
+                            self-preparation journey. Whether you're gearing up for an important presentation, interview, exam, 
+                            or any significant event, my goal is to equip you with the tools and insights needed to perform at your best.
+                        </p>
+                    </div>
+                </div>
+                <!-- Creator Image -->
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <img 
+                        src="self3.jpg" 
+                        alt="Dudekula Meeravali" 
+                        class="rounded-lg shadow-lg" 
+                        style="height: auto; width: 80%; max-width: 400px; object-fit: cover;">
+                </div>
                 
+            </div>
         </div>
-    </div>
+    </section>
     
-            <!-------contact us-->
-            <div class="contact-form">
-              <h1>Contact Us</h1>
-              <div class="container1">
-                  <div class="main">
-                      <div class="content1">
-                          <h2>Contact Us</h2>
-                          <form action="https://api.web3forms.com/submit" method="post">
-                              <input type="hidden" name="access_key" value="b0f7e6b5-d114-457e-9a6e-727c4e3fdc7d">
-                              <input type="text" name="name" placeholder="Enter Your Name">
-                            
-                              <input type="email" name="name" placeholder="Enter Your Email">
-                              <textarea name="message" placeholder="Your Message"></textarea>                   
-                   <button type="submit" class="btn">Send <i class="fas fa-paper-plane"></i></button>
-                          </form>
-                      </div>
-                      <div class="form-img">
-                          <img src="bg1.png" alt="">
-                      </div>
-                  </div>
-              </div>
-          </div>
-           
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-purple-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-4xl font-bold mb-8">Contact Us</h2>
+                    <form class="space-y-6" netlify>
+                        <input type="text" placeholder="Enter Your Name"
+                            class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20">
+                        <input type="email" placeholder="Enter Your Email"
+                            class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20">
+                        <textarea placeholder="Your Message" rows="4"
+                            class="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20"></textarea>
+                        <button
+                            class="bg-red-700 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                <div class="flex items-center justify-center">
+                    <img src="bg1.png" alt="Contact" class="rounded-lg max-w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <!-- Footer -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-8 md:mb-0">
+                    <h2 class="text-2xl font-bold text-orange-500">
+                        PrePrep<span class="text-red-500">.</span>
+                    </h2>
+                    <p class="mt-2 text-gray-400">Prepare. Practice. Succeed.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-orange-500 transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="hover:text-orange-500 transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="hover:text-orange-500 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script>
-        document.getElementById('cn1').addEventListener('click', function() {
-            window.open('recording.html', '_blank');
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
         });
-        </script>
-       
 
-       <script>
-        const accordionItemHeaders = document.querySelectorAll(".accordion-item-header");
-      
-      accordionItemHeaders.forEach(accordionItemHeader => {
-        accordionItemHeader.addEventListener("click", event => {
-          
-          // Uncomment in case you only want to allow for the display of only one collapsed item at a time!
-          
-          // const currentlyActiveAccordionItemHeader = document.querySelector(".accordion-item-header.active");
-          // if(currentlyActiveAccordionItemHeader && currentlyActiveAccordionItemHeader!==accordionItemHeader) {
-          //   currentlyActiveAccordionItemHeader.classList.toggle("active");
-          //   currentlyActiveAccordionItemHeader.nextElementSibling.style.maxHeight = 0;
-          // }
-      
-          accordionItemHeader.classList.toggle("active");
-          const accordionItemBody = accordionItemHeader.nextElementSibling;
-          if(accordionItemHeader.classList.contains("active")) {
-            accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
-          }
-          else {
-            accordionItemBody.style.maxHeight = 0;
-          }
-          
+        // FAQ accordion
+        const faqHeaders = document.querySelectorAll('.faq-item-header');
+        const faqContents = document.querySelectorAll('.faq-item-content');
+
+        faqHeaders.forEach((header, index) => {
+            header.addEventListener('click', () => {
+                // Toggle active class on content
+                faqContents[index].classList.toggle('active');
+                faqContents[index].classList.contains('active')
+                    ? faqContents[index].classList.remove('hidden')
+                    : faqContents[index].classList.add('hidden');
+
+                // Toggle rotation of chevron icon
+                const icon = header.querySelector('.fa-chevron-down');
+                icon.style.transform = faqContents[index].classList.contains('active')
+                    ? 'rotate(180deg)'
+                    : 'rotate(0)';
+
+                // Close other FAQ items
+                faqContents.forEach((content, i) => {
+                    if (i !== index && content.classList.contains('active')) {
+                        content.classList.remove('active');
+                        content.classList.add('hidden');
+                        const otherIcon = faqHeaders[i].querySelector('.fa-chevron-down');
+                        otherIcon.style.transform = 'rotate(0)';
+                    }
+                });
+            });
         });
-      });
-      </script>
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('active') &&
+                !mobileMenu.contains(e.target) &&
+                !menuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Form validation
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const name = contactForm.querySelector('input[type="text"]').value;
+                const email = contactForm.querySelector('input[type="email"]').value;
+                const message = contactForm.querySelector('textarea').value;
+
+                // Basic validation
+                if (!name || !email || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+
+                // Here you would typically send the form data to a server
+                console.log('Form submitted:', { name, email, message });
+
+                // Clear form
+                contactForm.reset();
+                alert('Message sent successfully!');
+            });
+        }
+
+        // Email validation helper
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
 
 
+
+    </script>
 </body>
+
 </html>
